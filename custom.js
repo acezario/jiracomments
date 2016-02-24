@@ -128,7 +128,21 @@ function validateForm(){
 		$('html, body').animate({ scrollTop: 0 }, 'fast');
 		validation =  false;
 	}
-	else{		
+	//"Yes" checked but no info provided
+	else if(document.getElementById('codeChangeY').checked){
+		if($('.cbDrupal').prop('checked', false) && 
+			$('.cbJava').prop('checked', false) && 
+				$('.cbHtaccess').prop('checked', false) && 
+					$('.cbOracle').prop('checked', false)&&
+						!$("#code_more_details").val()){
+
+			$("#codeError").show();
+			$("#result").hide();
+			$('html, body').animate({ scrollTop: 0 }, 'fast');
+			validation =  false;
+		}
+	}
+	else {		
 		$("#codeError").hide();
 	}
 	
@@ -143,6 +157,7 @@ function showResult(){
 		$("#result").show();
 		$("#cmsError").hide();
 		$("#cmsError").hide();
+		$("#clipboardTip").show();
 	
 		var clipboard = new Clipboard('.btn');
 	}
@@ -244,6 +259,14 @@ function refreshForm(){
 	var r = confirm("Would you like to completly refresh this form?");
 	if (r == true) {
 		document.getElementById('comment').reset();
+		$("#result").val("");
+		$("#result").hide();
+		$("#clipboardTip").hide();
+		$("#codeError").hide();
+		$("#cmsError").hide();
+		$("#codeChange").hide();
+		$("#cmsSession").hide();
+
 	}
 	
 }

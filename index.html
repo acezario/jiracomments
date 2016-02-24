@@ -61,8 +61,8 @@
 
         <!-- Code -->
 		<div id="errors">
-		<div id="cmsError">Preencha as mudanças de CMS</div>
-		<div id="codeError">Preencha as mudanças de Código</div>
+			<div id="cmsError">Preencha as mudanças de CMS</div>
+			<div id="codeError">Preencha as mudanças de Código</div>
 		</div>
 		
         <h1 id="overview" class="page-header">Code</h1>
@@ -97,25 +97,25 @@
 				  </div>              
 				  <div class="radio">
 					<label>
-					  <input type="checkbox" name="code_changes_type[]" value="Drupal">
+					  <input id="cbDrupal" type="checkbox" name="code_changes_type[]" value="Drupal">
 					  Drupal
 					</label>
 				  </div>
 				  <div class="radio">
 					<label>
-					  <input type="checkbox" name="code_changes_type[]" value="Java">
+					  <input id="cbJava" type="checkbox" name="code_changes_type[]" value="Java">
 					  Java
 					</label>
 				  </div> 
 				  <div class="radio">
 					<label>
-					  <input type="checkbox" name="code_changes_type[]" value="Htaccess">
+					  <input id="cbHtaccess" type="checkbox" name="code_changes_type[]" value="Htaccess">
 					  Htaccess
 					</label>
 				  </div> 
 				  <div class="radio">
 					<label>
-					  <input type="checkbox" name="code_changes_type[]" value="Oracle Database">
+					  <input id="cbOracle" type="checkbox" name="code_changes_type[]" value="Oracle Database">
 					  Oracle
 					</label>
 				  </div>
@@ -213,7 +213,8 @@
           <div class="bs-callout bs-callout-default">                
             <div class="form-group">
               <textarea name="result" id="result" class="form-control" rows="20"></textarea>
-            </div>              
+            </div> 
+			 <p id="clipboardTip" class="bg-info text-info">HTML copied to the clipboard! =)</p>
           </div>
         </div>
       </div>
