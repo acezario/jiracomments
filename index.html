@@ -56,7 +56,8 @@
         <h3 class="text-muted">Jira Comment</h3>
       </div>
       
-      <form id="comment" method="post">
+
+      <form id="comment">
 
         <!-- Code -->
 		<div id="errors">
@@ -195,15 +196,15 @@
 		</div>
 		
         <!-- Unit tests -->   
-		<div id="formActions">
+		  <div id="formActions">
 			<button id="gerarHtml" data-clipboard-action="copy" data-clipboard-target="#result" 
 					class="btn btn-success btn-lg" onclick="showResult()">Generate HTML</button>
 				
-			<button id="refreshPage" class="btn btn-danger btn-lg" onclick=location.reload();>Refresh Form</button>
+			<button id="refreshPage" class="btn btn-danger btn-lg" onclick="refreshForm()">Refresh Form</button>
 		</div>
+	  
       </form>
-	  
-	  
+	
       
       <!-- Result -->
       <h1 id="overview" class="page-header">Result</h1>

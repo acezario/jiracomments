@@ -1,7 +1,8 @@
 $(document).ready(function() {
-  var idForm = "#comment";
+ 
 	$("#result").hide();
-	
+var idForm = "#comment";
+  
   $(idForm).submit(function( event ) {
     event.preventDefault();
     
@@ -166,9 +167,6 @@ function removeTest(idR){
 	$('#'+idR+'').remove();
 }
 
-
-
-
 function unitTestTpl(idTpl,titleTpl){
 	
 	var unitTestString=   
@@ -241,3 +239,23 @@ function cmsTpl(idTpl,titleTpl){
 	return cmsString;	
 	
 }
+
+function refreshForm(){
+	var r = confirm("Would you like to completly refresh this form?");
+	if (r == true) {
+		document.getElementById('comment').reset();
+	}
+	
+}
+
+//Função para confirmar saída da página
+window.onbeforeunload = function (e) {
+    e = e || window.event;
+
+    // For IE and Firefox prior to version 4
+    if (e) {
+        e.returnValue = 'Are you sure you want to leave?';
+    }
+    // For Safari
+    return 'Are you sure you want to leave?';
+};
