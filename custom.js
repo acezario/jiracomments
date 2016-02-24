@@ -100,9 +100,9 @@ function showCodeChange(){
 
 function showCMSChange(){
     if(document.getElementById('cms_changes_yes').checked) {
-		$("#cmsSteps").show();
+		$("#cmsSession").show();
 	} else {
-		$("#cmsSteps").hide();
+		$("#cmsSession").hide();
 	}
 }
 
@@ -148,23 +148,16 @@ function showResult(){
 }
 
 	
-var numForms = 1;
+var numTestForms = 1;
 function addTest(){
 
-var id ='unitTestForm'+numForms;
-var title = 'Test '+numForms;
+var id ='unitTestForm'+numTestForms;
+var title = 'Test '+numTestForms;
 
 	var newTest =unitTestTpl(id, title);
 	$(newTest).appendTo('#moreTests');
-	numForms++;
+	numTestForms++;
 	
-/*$(document).ready(function() {
-	
-	$('button.remove').on('click',function(e){
-		$(this).parent().parent().remove();
-	});
-});
-}*/
 }
 
 
@@ -173,31 +166,78 @@ function removeTest(idR){
 	$('#'+idR+'').remove();
 }
 
+
+
+
 function unitTestTpl(idTpl,titleTpl){
 	
-var tpl=   
-'<div class="row" id="'+idTpl+'">'+
-	'<div class="col-lg-12">'+
-		'<div class="bs-callout bs-callout-warning">'+
-			'<h4>'+titleTpl+'</h4>'+
-				'<div class="form-group">'+
-					'<label for="unit_tests_steps_title">Title </label>'+
-					'<input name="unit_tests_steps_title[]" class="form-control" /> '+
+	var unitTestString=   
+		'<div class="row" id="'+idTpl+'">'+
+			'<div class="col-lg-12">'+
+				'<div class="bs-callout bs-callout-warning">'+
+					'<h4>'+titleTpl+'</h4>'+
+						'<div class="form-group">'+
+							'<label for="unit_tests_steps_title">Title </label>'+
+							'<input name="unit_tests_steps_title[]" class="form-control" /> '+
+						'</div>'+
+						'<div class="form-group">'+
+							'<label for="unit_tests_steps_steps">Steps</label>'+
+							'<textarea name="unit_tests_steps_steps[]" class="form-control" rows="3"></textarea>' +
+						'</div>'+
+						'<div class="form-group">'+
+							'<label for="unit_tests_steps_description">Expected Results</label>'+
+							'<textarea name="unit_tests_steps_description[]" class="form-control" rows="3"></textarea>'+
+						'</div>'+
+						'<div>'+
+							'<button class="btn btn-lg btn-warning" onclick="removeTest(\''+idTpl+'\')">- Test</button>'+
+						'</div>'+
 				'</div>'+
-				'<div class="form-group">'+
-					'<label for="unit_tests_steps_steps">Steps</label>'+
-					'<textarea name="unit_tests_steps_steps[]" class="form-control" rows="3"></textarea>' +
-				'</div>'+
-				'<div class="form-group">'+
-					'<label for="unit_tests_steps_description">Expected Results</label>'+
-					'<textarea name="unit_tests_steps_description[]" class="form-control" rows="3"></textarea>'+
-				'</div>'+
-				'<div>'+
-					'<button class="btn btn-lg btn-warning" onclick="removeTest(\''+idTpl+'\')">- Test</button>'+
-				'</div>'+
-		'</div>'+
-	'</div>'+
-'</div>';
+			'</div>'+
+		'</div>';
 
-	return tpl;
+	return unitTestString;
+}
+
+var numCmsForms = 1;
+function addCms(){
+
+var id ='cmsForm'+numCmsForms;
+var title = 'Step '+numCmsForms;
+
+	var newTest =cmsTpl(id, title);
+	$(newTest).appendTo('#cmsSteps');
+	numCmsForms++;
+	
+}
+
+
+function removeCms(idCms){
+
+	$('#'+idCms+'').remove();
+}
+
+function cmsTpl(idTpl,titleTpl){
+	
+	var cmsString=
+		'<div class="row" id="'+idTpl+'">'+
+			'<div class="col-lg-12">'+
+				'<div class="bs-callout bs-callout-danger">'+
+					'<h4>'+titleTpl+'</h4>'+
+					'<div class="form-group">'+
+						'<label for="cms_changes_steps_title">Title</label>'+
+						'<input name="cms_changes_steps_title[]" class="form-control" />'+
+					'</div>'+
+					'<div class="form-group">'+
+						'<label for="cms_changes_steps_description">Description</label>'+
+						'<textarea name="cms_changes_steps_description[]" class="form-control" rows="3"></textarea>'+
+					'</div>'+
+					'<div>'+
+							'<button class="btn btn-lg btn-warning" onclick="removeCms(\''+idTpl+'\')">- CMS </button>'+
+					'</div>'+
+				'</div>'+
+			'</div>'+
+		'</div>';
+
+	return cmsString;	
+	
 }
